@@ -56,7 +56,7 @@ export const getAuthStatus = createServerFn({ method: "GET" }).handler(async () 
   try {
     const session = await loadSession();
     const s = session.data || {};
-    const redirectUri = process.env.SALESFORCE_REDIRECT_URI || "http://localhost:5000/api/oauth/callback";
+    const redirectUri = process.env.SALESFORCE_REDIRECT_URI || "https://salesforceauth.netlify.app/api/oauth/callback";
     
     return {
       authenticated: Boolean(s.accessToken && s.instanceUrl),

@@ -57,7 +57,7 @@ export function getSessionConfig() {
 
 export function getCallbackUrl(request: Request) {
   // Use SALESFORCE_REDIRECT_URI env var for production, fallback to localhost for development
-  const redirectUri = process.env.SALESFORCE_REDIRECT_URI || "http://localhost:5000/api/oauth/callback";
+  const redirectUri = process.env.SALESFORCE_REDIRECT_URI || "https://salesforceauth.netlify.app/api/oauth/callback";
   return redirectUri;
 }
 
