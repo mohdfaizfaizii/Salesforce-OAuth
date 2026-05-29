@@ -34,9 +34,9 @@ export function getLoginUrl() {
 }
 
 export function getSessionConfig() {
-  const secret = process.env.SALESFORCE_CLIENT_SECRET || "";
-  if (!secret) {
-    console.warn("[getSessionConfig] SALESFORCE_CLIENT_SECRET is missing!");
+  const secret = process.env.SALESFORCE_CLIENT_SECRET || "default_fallback_secret_for_initialization_32_chars";
+  if (!process.env.SALESFORCE_CLIENT_SECRET) {
+    console.warn("[getSessionConfig] SALESFORCE_CLIENT_SECRET is missing from environment!");
   }
   // useSession requires >=32 char password
   const password = createHash("sha256")
@@ -49,7 +49,7 @@ export function getSessionConfig() {
     cookie: {
       httpOnly: true,
       sameSite: "lax" as const,
-      secure: process.env.NODE_ENV === "production",
+      secure: true,
       path: "/",
     },
   };
