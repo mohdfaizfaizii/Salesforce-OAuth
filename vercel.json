@@ -1,8 +1,3 @@
 {
-  "version": 2,
-  "framework": "vite",
-  "buildCommand": "npm run build",
-  "outputDirectory": ".vercel/output",
-  "cleanUrls": true,
-  "trailingSlash": false
+  "version": 2
 }
