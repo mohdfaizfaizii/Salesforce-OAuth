@@ -8,12 +8,12 @@
   },
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "cross-env VINXI_SERVER_PRESET=vercel vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "vercel-build": "vite build"
+    "vercel-build": "cross-env VINXI_SERVER_PRESET=vercel vite build"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
