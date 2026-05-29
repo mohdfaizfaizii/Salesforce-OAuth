@@ -1,13 +1,21 @@
 import { createStartHandler } from '@tanstack/react-start/server'
 import { createRouter } from '@tanstack/react-router'
+import { QueryClient } from '@tanstack/react-query'
 
-import { routeTree } from './routeTree.gen'
+import { routeTree } from '../src/routeTree.gen'
 
-const router = createRouter({ routeTree })
+const queryClient = new QueryClient()
+
+const router = createRouter({ 
+  routeTree,
+  context: { queryClient },
+  scrollRestoration: true,
+  defaultPreloadStaleTime: 0,
+})
 
 export default createStartHandler({
   createRouter,
   getRouterManifest: async () => {
-    return import('./routeTree.gen').then((m) => m.routeTree)
+    return import('../src/routeTree.gen').then((m) => m.routeTree)
   },
 })
