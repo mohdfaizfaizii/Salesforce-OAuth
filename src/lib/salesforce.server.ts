@@ -56,8 +56,7 @@ export function getSessionConfig() {
 }
 
 export function getCallbackUrl(request: Request) {
-  // REQUIREMENT: Must be EXACTLY http://localhost:5000/api/oauth/callback
-  // unless explicitly overridden by SALESFORCE_REDIRECT_URI env var.
+  // Use SALESFORCE_REDIRECT_URI env var for production, fallback to localhost for development
   const redirectUri = process.env.SALESFORCE_REDIRECT_URI || "http://localhost:5000/api/oauth/callback";
   return redirectUri;
 }

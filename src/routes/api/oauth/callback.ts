@@ -90,7 +90,7 @@ export const Route = createFileRoute("/api/oauth/callback")({
 
         console.log(`[OAuth Callback] Session updated successfully. Redirecting to frontend...`);
 
-        const frontendUrl = process.env.FRONTEND_URL || "http://localhost:8080";
+        const frontendUrl = process.env.FRONTEND_URL || "https://salesforceauth.netlify.app";
         return new Response(null, { status: 302, headers: { Location: frontendUrl } });
       },
     },
